@@ -1,0 +1,26 @@
+{
+  "name": "hiapi-icon-skills",
+  "version": "0.2.0",
+  "description": "Original Chinese-first Codex skill for generating and revising cohesive product icon sets",
+  "type": "module",
+  "private": true,
+  "homepage": "https://github.com/HiAPIAI/hiapi-icon-skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HiAPIAI/hiapi-icon-skills.git"
+  },
+  "bin": {
+    "hiapi-icon-skills": "./scripts/install.mjs",
+    "hiapi-icon-plan": "./scripts/hiapi-icon-skills.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check scripts/hiapi-icon-skills.mjs && node --check scripts/style-presets.mjs && node --check scripts/install.mjs && npm test"
+  },
+  "keywords": ["codex", "agent-skill", "icon-generation", "chibi-icons", "product-icons", "imagegen", "hiapi"],
+  "files": ["LICENSE", "SKILL.md", "agents", "assets", "references", "scripts"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

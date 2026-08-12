@@ -1,0 +1,4 @@
+interface:
+  display_name: "HIAPI 中文图标技能"
+  short_description: "用原创中文风格生成一致的产品图标"
+  default_prompt: "请先用中文列出合适的图标风格和色板，再为我的主题生成一套一致的产品图标预览。"
