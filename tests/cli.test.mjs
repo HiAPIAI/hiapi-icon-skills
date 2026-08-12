@@ -5,10 +5,11 @@ import { promisify } from "node:util";
 import path from "node:path";
 import fs from "node:fs/promises";
 import os from "node:os";
+import { fileURLToPath } from "node:url";
 import { STYLES, PALETTES } from "../scripts/style-presets.mjs";
 
 const run = promisify(execFile);
-const root = path.resolve(import.meta.dirname, "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cli = path.join(root, "scripts", "hiapi-icon-skills.mjs");
 const installer = path.join(root, "scripts", "install.mjs");
 const requiredStyleFields = ["nameZh", "nameEn", "summaryZh", "material", "surface", "geometry", "proportions", "camera", "composition", "lighting", "shadow", "edges", "detailDensity", "background", "colorBehavior", "consistency", "bestFor", "avoid"];
