@@ -117,6 +117,24 @@ test("installer copies runtime files and protects existing installs", async () =
   }
 });
 
+test("explicit Codex target never installs to an also-detected Claude home", async () => {
+  const home = await fs.mkdtemp(path.join(os.tmpdir(), "hiapi-icon-agents-"));
+  const codexHome = path.join(home, "codex");
+  const claudeHome = path.join(home, ".claude");
+  try {
+    await fs.mkdir(codexHome, { recursive: true });
+    await fs.mkdir(claudeHome, { recursive: true });
+    await run(process.execPath, [installer, "--codex"], {
+      cwd: root,
+      env: { ...process.env, CODEX_HOME: codexHome, HOME: home, USERPROFILE: home },
+    });
+    assert.equal(await fs.readFile(path.join(codexHome, "skills", "hiapi-icon-skills", "SKILL.md"), "utf8").then(() => true), true);
+    await assert.rejects(fs.access(path.join(claudeHome, "skills", "hiapi-icon-skills")));
+  } finally {
+    await fs.rm(home, { recursive: true, force: true });
+  }
+});
+
 test("source does not contain third-party product or preset branding", async () => {
   const files = ["SKILL.md", "scripts/style-presets.mjs", "scripts/hiapi-icon-skills.mjs", "references/prompting.md"];
   const source = (await Promise.all(files.map((file) => fs.readFile(path.join(root, file), "utf8")))).join("\n");
