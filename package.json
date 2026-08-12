@@ -1,0 +1,17 @@
+{
+  "name": "hiapi-icon-skills",
+  "version": "0.1.0",
+  "description": "Original open-source visual skill workflow for cohesive product icon sets through HiAPI",
+  "type": "module",
+  "bin": {
+    "hiapi-icon-skills": "./scripts/hiapi-icon-skills.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check scripts/hiapi-icon-skills.mjs && node --check scripts/style-presets.mjs && npm test"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
